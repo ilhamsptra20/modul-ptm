@@ -4,7 +4,8 @@
 <div class="container mt-5">
     <!-- Button trigger modal -->
     <div class="row">
-        <div class="col">
+        <div class="col d-flex justify-content-between">
+            <h3>Semua siswa</h3>
             <button type="button" id="btn-create" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Tambah Siswa
             </button>
@@ -41,8 +42,8 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $student->nis }}</td>
                 <td>{{ $student->nama }}</td>
-                <td>{{ $student->rombel }}</td>
-                <td>{{ $student->rayon }}</td>
+                <td><a href="{{ $student->rombel->slug}}">{{ $student->rombel->rombel}}</a></td>
+                <td><a href="{{ $student->rayon->slug}}">{{ $student->rayon->rayon}}</a></td>
                 <td>{{ $student->ket }}</td>
                 <td class="d-flex">
                     <button type="button" id="btn-edit" class="btn btn-success px-2 py-0 mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal" value="{{ $student->id }}">
@@ -103,7 +104,12 @@
                         </div>
                         <div class="mb-3">
                             <label for="rombel" class="form-label">Rombel</label>
-                            <input type="text" class="form-control @error('rombel') is-invalid @enderror" id="rombel" name="rombel" placeholder="RPL XI-2">
+                            <select name="rombel_id" id="rombel_id" class="form-control @error('rombel') is-invalid @enderror">
+                                <option selected>--Pilih Rombel--</option>
+                                @foreach ($rombels as $rombel)
+                                    <option value="{{$rombel->id}}">{{$rombel->rombel}}</option>
+                                @endforeach
+                            </select>
                             @error('rombel')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -112,7 +118,12 @@
                         </div>
                         <div class="mb-3">
                             <label for="rayon" class="form-label">Rayon</label>
-                            <input type="text" class="form-control @error('rayon') is-invalid @enderror" id="rayon" name="rayon" placeholder="Tajur1">
+                            <select name="rayon_id" id="rayon_id" class="form-control @error('rayon') is-invalid @enderror">
+                                <option selected>--Pilih rayon--</option>
+                                @foreach ($rayons as $rayon)
+                                    <option value="{{$rayon->id}}">{{$rayon->rayon}}</option>
+                                @endforeach
+                            </select>
                             @error('rayon')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -121,7 +132,30 @@
                         </div>
                         <div class="mb-3">
                             <label for="ket" class="form-label">Keterangan</label>
-                            <input type="text" class="form-control @error('ket') is-invalid @enderror" id="ket" name="ket" placeholder="keteranagan anda">
+                            <div class="form-check">
+                                <input class="form-check-input @error('ket') is-invalid @enderror" type="radio" name="ket" id="ket1" value="hadir">
+                                <label class="form-check-label @error('ket') is-invalid @enderror" for="ket1">
+                                  Hadir
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input @error('ket') is-invalid @enderror" type="radio" name="ket" id="ket2" value="izin">
+                                <label class="form-check-label @error('ket') is-invalid @enderror" for="ket2">
+                                  Izin
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input @error('ket') is-invalid @enderror" type="radio" name="ket" id="ket3" value="sakit">
+                                <label class="form-check-label @error('ket') is-invalid @enderror" for="ket3">
+                                  sakit
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input @error('ket') is-invalid @enderror" type="radio" name="ket" id="ket4" value="alfa">
+                                <label class="form-check-label @error('ket') is-invalid @enderror" for="ket4">
+                                  alfa
+                                </label>
+                              </div>
                             @error('ket')
                             <div class="invalid-feedback">
                                 {{ $message }}

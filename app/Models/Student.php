@@ -12,8 +12,18 @@ class Student extends Model
     protected $fillable = [
         'nama',
         'nis',
-        'rombel',
-        'rayon',
+        'rombel_id',
+        'rayon_id',
         'ket',
     ];
+
+    public function rombel()
+    {
+        return $this->belongsTo(Rombel::class);
+    }
+
+    public function rayon()
+    {
+        return $this->belongsTo(Rayon::class);
+    }
 }

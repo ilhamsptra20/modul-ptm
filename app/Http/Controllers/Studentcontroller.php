@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rayon;
+use App\Models\Rombel;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -13,9 +15,11 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $rayons = Rayon::get();
+        $rombels = Rombel::get();
         $students = Student::get();
-        return view('students.index', compact('students'));
+        return view('students.index', compact('students', 'rombels', 'rayons'));
     }
 
     /**
@@ -25,6 +29,7 @@ class StudentController extends Controller
      */
     public function create()
     {
+       
     }
 
     /**
@@ -38,8 +43,8 @@ class StudentController extends Controller
         $attr = $request->validate([
             'nis' => 'required|max:8|min:8',
             'nama' => 'required',
-            'rombel' => 'required',
-            'rayon' => 'required',
+            'rombel_id' => 'required',
+            'rayon_id' => 'required',
             'ket' => 'required',
         ]);
 
@@ -80,8 +85,8 @@ class StudentController extends Controller
         $attr = $request->validate([
             'nis' => 'required|max:8|min:8',
             'nama' => 'required',
-            'rombel' => 'required',
-            'rayon' => 'required',
+            'rombel_id' => 'required',
+            'rayon_id' => 'required',
             'ket' => 'required',
         ]);
 
