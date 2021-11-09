@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RayonController;
+use App\Http\Controllers\RombelController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,5 @@ Route::get('/', function () {
 });
 
 Route::resource('student', StudentController::class);
+Route::resource('rayon', RayonController::class);
+Route::resource('rombel', RombelController::class);

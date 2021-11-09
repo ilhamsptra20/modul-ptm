@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rayon;
+use App\Models\Rombel;
 use Illuminate\Http\Request;
 
 class RayonController extends Controller
@@ -46,7 +47,10 @@ class RayonController extends Controller
      */
     public function show(Rayon $rayon)
     {
-        //
+        $rombels = Rombel::all();
+        $rayons = Rayon::all();
+        $students = $rayon->students()->get();
+        return view('students.index' ,compact('students', 'rayon',  'rayons', 'rombels'));
     }
 
     /**

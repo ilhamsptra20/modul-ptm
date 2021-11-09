@@ -5,7 +5,13 @@
     <!-- Button trigger modal -->
     <div class="row">
         <div class="col d-flex justify-content-between">
+            @isset($rayon)
+            <h3>Rayon {{$rayon->rayon}}</h3>
+            @elseif($rombel)
+            <h3>Rombel {{$rombel->rombel}}</h3>
+            @else
             <h3>Semua siswa</h3>
+            @endisset
             <button type="button" id="btn-create" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Tambah Siswa
             </button>
@@ -43,7 +49,7 @@
                 <td>{{ $student->nis }}</td>
                 <td>{{ $student->nama }}</td>
                 <td><a href="{{ $student->rombel->slug}}">{{ $student->rombel->rombel}}</a></td>
-                <td><a href="{{ $student->rayon->slug}}">{{ $student->rayon->rayon}}</a></td>
+                <td><a href="{{ route('rayon.show', $student->rayon->slug) }}">{{ $student->rayon->rayon}}</a></td>
                 <td>{{ $student->ket }}</td>
                 <td class="d-flex">
                     <button type="button" id="btn-edit" class="btn btn-success px-2 py-0 mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal" value="{{ $student->id }}">
@@ -186,55 +192,5 @@
         </symbol>
     </svg>
 
-    <script>
-        const btnEdits = document.querySelectorAll('#btn-edit')
-        const btnCreate = document.querySelector('#btn-create')
-        const form = document.querySelector('#form')
-        const inputNis = document.querySelector('#nis')
-        const inputNama = document.querySelector('#nama')
-        const inputRayon = document.querySelector('#rayon')
-        const inputRombel = document.querySelector('#rombel')
-        const inputKet = document.querySelector('#ket')
-        const btn = document.querySelector('#btn-form')
-        let method = document.createElement('input')
-        let student
-
-        // membuat method
-        method.type = 'hidden'
-        method.name = '_method'
-        method.value = 'put'
-
-        btnEdits.forEach(btnEdit => {
-            btnEdit.addEventListener('click', function (){
-                
-                
-                
-                
-                
-                form.appendChild(method)
-                btn.textContent = 'Ubah Data Siswa'
-                fetch('/student/'+ this.value)
-                    .then(response => response.json())
-                    .then(data => [
-                        inputNis.value = data.student.nis,
-                        inputNama.value = data.student.nama,
-                        inputRayon.value = data.student.rayon,
-                        inputRombel.value = data.student.rombel,
-                        inputKet.value = data.student.ket,
-                        form.action = '/student/' + data.student.id,
-                    ])
-            })
-        });
-
-        btnCreate.addEventListener('click', function (){
-            inputNis.value = ''
-            inputNama.value = ''
-            inputRayon.value = ''
-            inputRombel.value = ''
-            inputKet.value = ''
-            form.action = '/student/'
-            form.removeChild(method)
-            btn.textContent = 'Tambah Siswa'
-        })
-    </script>
+    
 @endsection

@@ -46,7 +46,8 @@ class RombelController extends Controller
      */
     public function show(Rombel $rombel)
     {
-        //
+        $students = $rombel->students()->get();
+        return compact('students', 'rombel');
     }
 
     /**

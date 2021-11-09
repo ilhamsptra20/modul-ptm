@@ -17,8 +17,8 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('nis');
             $table->string('nama');
-            $table->string('rombel_id');
-            $table->string('rayon_id');
+            $table->foreignId('rombel_id')->constrained('rombels');
+            $table->foreignId('rayon_id')->constrained('rayons');
             $table->text('ket');
             $table->timestamps();
         });
