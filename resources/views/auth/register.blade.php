@@ -1,6 +1,6 @@
 
-@extends('layouts.main')
-@section('container')
+@extends('layouts.app')
+@section('content')
         <div class="row justify-content-center">
             <div class="col-lg-5">
                 {{-- Jika kita berhasil melakukan registrasi alert ini akan muncul , alert ini diatur didalam RegisterController --}}

@@ -7,7 +7,8 @@
         <div class="col d-flex justify-content-between">
             @isset($rayon)
             <h3>Rayon {{$rayon->rayon}}</h3>
-            @elseif($rombel)
+            @endisset
+            @isset($rombel)
             <h3>Rombel {{$rombel->rombel}}</h3>
             @else
             <h3>Semua siswa</h3>
