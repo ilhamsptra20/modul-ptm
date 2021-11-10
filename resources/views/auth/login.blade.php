@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('content')
         <div class="row justify-content-center">
@@ -21,7 +20,7 @@
                             <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">Login</button>
                             
                         </form>
-                        <small class="d-block text-center mt-3">Belum punya akun? <a href="/login">Register</a></small>
+                        <small class="d-block text-center mt-3">Belum punya akun? <a href="/register">Register</a></small>
                     </main>
                 </div>
             </div>

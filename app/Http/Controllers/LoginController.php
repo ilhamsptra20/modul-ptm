@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        view('auth.login');     
+        return view('auth.login');     
     }
     public function authenticate(Request $request)
     {
@@ -23,7 +23,7 @@ class LoginController extends Controller
         if (Auth::attempt($credencial)){
             $request->session()->regenerate();
 
-            return redirect()->intended('/student');
+            return 'anjayyy';
         }
 
         return back()->withErrors([

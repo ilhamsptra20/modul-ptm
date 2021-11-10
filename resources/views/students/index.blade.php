@@ -5,14 +5,14 @@
     <!-- Button trigger modal -->
     <div class="row">
         <div class="col d-flex justify-content-between">
-            @isset($rayon)
+            @if (isset($rayon))
             <h3>Rayon {{$rayon->rayon}}</h3>
-            @endisset
-            @isset($rombel)
+            @elseif(isset($rombel))
             <h3>Rombel {{$rombel->rombel}}</h3>
             @else
             <h3>Semua siswa</h3>
-            @endisset
+            @endif
+
             <button type="button" id="btn-create" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Tambah Siswa
             </button>

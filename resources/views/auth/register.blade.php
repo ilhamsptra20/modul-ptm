@@ -17,15 +17,15 @@
                             <h1 class="h3 mb-3 fw-normal">Register</h1>
 
                             <div class="form-floating">
-                                <input type="text" name="name" class="form-control mt-2" id="name" placeholder="name">
+                                <input type="text" name="name" class="form-control mt-2 @error('name') is-invalid @enderror" id="name" placeholder="name">
                                 <label for="name">Name</label>
                             </div>
                             <div class="form-floating">
-                                <input type="email" name="email" class="form-control mt-2" id="email" placeholder="name@example.com">
+                                <input type="email" name="email" class="form-control mt-2 @error('email') is-invalid @enderror" id="email" placeholder="name@example.com">
                                 <label for="email">Email address</label>
                             </div>
                             <div class="form-floating">
-                                <input type="password" name="password" class="form-control mt-2" id="password" placeholder="Password">
+                                <input type="password" name="password" class="form-control mt-2 @error('password') is-invalid @enderror" id="password" placeholder="Password">
                                 <label for="password">Password</label>
                             </div>
 
