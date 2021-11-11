@@ -55,7 +55,7 @@
 
     <!-- Nav Item - Login -->
     <li class="nav-item">
-    <button class="nav-link btn btn-link" type="button" data-bs-toggle="modal" data-bs-target="#logoutModal">
+    <button class="nav-link btn btn-link" type="button" data-toggle="modal" data-target="#logoutModal">
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Logout</span></button>
     </li>
