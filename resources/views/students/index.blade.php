@@ -49,7 +49,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $student->nis }}</td>
                 <td>{{ $student->nama }}</td>
-                <td><a href="{{ $student->rombel->slug}}">{{ $student->rombel->rombel}}</a></td>
+                <td><a href="{{ route('rombel.show', $student->rombel->slug)}}">{{ $student->rombel->rombel}}</a></td>
                 <td><a href="{{ route('rayon.show', $student->rayon->slug) }}">{{ $student->rayon->rayon}}</a></td>
                 <td>{{ $student->ket }}</td>
                 <td class="d-flex">

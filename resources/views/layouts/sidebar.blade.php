@@ -55,9 +55,9 @@
 
     <!-- Nav Item - Login -->
     <li class="nav-item">
-    <a class="nav-link" href="charts.html">
+    <button class="nav-link btn btn-link" type="button" data-bs-toggle="modal" data-bs-target="#logoutModal">
         <i class="fas fa-fw fa-chart-area"></i>
-        <span>Logout</span></a>
+        <span>Logout</span></button>
     </li>
 
     <!-- Divider -->

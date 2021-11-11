@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Auth\Events\Registered;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RayonController;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RombelController;
 use App\Http\Controllers\StudentController;
-use Illuminate\Auth\Events\Registered;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,15 +21,16 @@ use Illuminate\Auth\Events\Registered;
 |
 */
 
-// Route::get('/', function () {
-//     return view('auth.login');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::resource('student', StudentController::class);
-Route::resource('rayon', RayonController::class);
-Route::resource('rombel', RombelController::class);
+Route::prefix('')->middleware('auth')->group(function (){
+    Route::resource('student', StudentController::class);
+    Route::resource('rayon', RayonController::class);
+    Route::resource('rombel', RombelController::class);
+});
 
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'store']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
